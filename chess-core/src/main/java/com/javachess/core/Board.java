@@ -64,4 +64,18 @@ public final class Board {
 
         return new Board(start);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+
+        if (!(obj instanceof Board other)) return false;
+
+        return squares.equals(other.squares);
+    }
+
+    @Override
+    public int hashCode() {
+        return squares.hashCode();
+    }
 }

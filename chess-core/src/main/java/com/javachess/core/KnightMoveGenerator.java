@@ -6,27 +6,28 @@ import java.util.Optional;
 
 public final class KnightMoveGenerator implements MoveGenerator {
 
-    public static boolean isInside(int value){
-        return 0 <= value && value < 8;
-    }
-
     @Override 
     public List<Move> generate(Board board, Position from){
+        Piece knight = board.pieceAt(from).orElseThrow();
+
+        if (knight.type() != PieceType.KNIGHT) {
+            throw new IllegalArgumentException("Expected a knight");
+        }
+
         List<Move> possible = new ArrayList<>();
 
         int fileSource = from.file();
         int rankSource = from.rank();
-
-        Piece knight = board.pieceAt(from).orElseThrow();
-
+       
         int[] fileVisit = {-2,-1,1,2};
         int[] rankSigns = {-1, 1};
-        for(int df : fileVisit){
+        
+        for(int df : fileVisit){    
             int dr = 3 - Math.abs(df);
-            
-            for(int sr : rankSigns){
+
+            for(int rs : rankSigns){
                 int newFile = fileSource + df;
-                int newRank = rankSource + dr;
+                int newRank = rankSource + rs * dr;
 
                 if(!isInside(newFile) || !isInside(newRank)) continue;
 
@@ -40,5 +41,9 @@ public final class KnightMoveGenerator implements MoveGenerator {
         }
         
         return possible;
+    }
+
+    private static boolean isInside(int value){
+        return 0 <= value && value < 8;
     }
 }
