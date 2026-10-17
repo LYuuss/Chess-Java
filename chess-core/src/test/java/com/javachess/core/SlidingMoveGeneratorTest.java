@@ -132,7 +132,7 @@ class SlidingMoveGeneratorTest {
     }
 
     @Test
-    void shouldCaptureOpponentPieceWithoutJumpingOver()() {
+    void shouldCaptureOpponentPieceWithoutJumpingOver() {
         Position from = Position.fromAlgebraic("d4");
         Position d6 = Position.fromAlgebraic("d6");
 
