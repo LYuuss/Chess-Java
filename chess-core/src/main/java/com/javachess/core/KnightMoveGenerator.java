@@ -29,9 +29,12 @@ public final class KnightMoveGenerator implements MoveGenerator {
                 int newFile = fileSource + df;
                 int newRank = rankSource + rs * dr;
 
-                if(!isInside(newFile) || !isInside(newRank)) continue;
+                if(!Position.isInside(newFile, newRank)) continue;
 
-                Position to = new Position(newFile, newRank);
+                Position to = new Position(
+                    newFile,
+                    newRank
+                );
 
                 Optional<Piece> dest = board.pieceAt(to);
 
@@ -41,9 +44,5 @@ public final class KnightMoveGenerator implements MoveGenerator {
         }
         
         return possible;
-    }
-
-    private static boolean isInside(int value){
-        return 0 <= value && value < 8;
     }
 }

@@ -21,4 +21,10 @@ public record Position(int file, int rank) {
     public String toAlgebraic() {
         return "" + (char) ('a' + file) + (char) ('1' + rank);
     }
+
+    public static boolean isInside(int file, int rank) {
+        boolean state1 = 0 <= file && file < 8;
+        boolean state2 = 0 <= rank && rank < 8;
+        return  state1 && state2;
+    }
 }

@@ -30,9 +30,12 @@ public final class KingMoveGenerator implements MoveGenerator {
             int newFile = from.file() + d.df();
             int newRank = from.rank() + d.dr();
 
-            if(!isInside(newFile) || !isInside(newRank)) continue;
+            if(!Position.isInside(newFile, newRank)) continue;
             
-            Position to = new Position(newFile, newRank);
+            Position to = new Position(
+                newFile,
+                newRank
+            );
 
             Optional<Piece> dest = board.pieceAt(to);
 
@@ -44,7 +47,4 @@ public final class KingMoveGenerator implements MoveGenerator {
 
     }
 
-    private static boolean isInside(int value){
-        return 0 <= value && value < 8;
-    }
 }

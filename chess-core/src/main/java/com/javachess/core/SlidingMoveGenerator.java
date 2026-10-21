@@ -35,14 +35,13 @@ public final class SlidingMoveGenerator implements MoveGenerator {
                 int newFile = current.file() + direction.df();
                 int newRank = current.rank() + direction.dr();
 
-                if (!isInside(newFile) || !isInside(newRank)){
-                    break;
-                }
-
+                if (!Position.isInside(newFile, newRank)) break;
+                
                 Position step = new Position(
                     newFile,
                     newRank
                 );
+
                 Optional<Piece> place = board.pieceAt(step); 
 
                 if(place.isEmpty()){
@@ -65,9 +64,5 @@ public final class SlidingMoveGenerator implements MoveGenerator {
         }
 
         return possible;
-    }
-
-    private static boolean isInside(int value){
-        return 0 <= value && value < 8;
     }
 }
