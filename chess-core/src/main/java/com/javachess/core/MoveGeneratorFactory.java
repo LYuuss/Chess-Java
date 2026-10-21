@@ -51,6 +51,11 @@ public final class MoveGeneratorFactory {
             ))
         );
 
+        registry.put(
+            PieceType.KING,
+            new KingMoveGenerator()
+        );
+        
         GENERATORS = Map.copyOf(registry);
     }
 
