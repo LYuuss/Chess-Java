@@ -56,6 +56,10 @@ public final class MoveGeneratorFactory {
             new KingMoveGenerator()
         );
         
+        registry.put(
+            PieceType.PAWN,
+            new PawnMoveGenerator()
+        );
         GENERATORS = Map.copyOf(registry);
     }
 

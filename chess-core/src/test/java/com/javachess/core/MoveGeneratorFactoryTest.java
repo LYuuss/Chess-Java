@@ -57,6 +57,12 @@ class MoveGeneratorFactoryTest {
                 Set.of(
                     "d3", "d5", "c3", "c4", "c5", "e3", "e4", "e5"
                 )
+            ),
+            Arguments.of(
+                PieceType.PAWN,
+                Set.of(
+                    "d5"
+                )
             )
             
         );
@@ -90,13 +96,6 @@ class MoveGeneratorFactoryTest {
         assertThrows(
             NullPointerException.class,
             () -> MoveGeneratorFactory.forPiece(null));
-    }
-
-    @Test
-    void shouldRejectUnsupportedPieceType(){
-        assertThrows(
-            IllegalArgumentException.class,
-            () -> MoveGeneratorFactory.forPiece(PieceType.PAWN));
     }
 
 }
