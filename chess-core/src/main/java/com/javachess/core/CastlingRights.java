@@ -1,5 +1,7 @@
 package com.javachess.core;
 
+import java.util.Objects;
+
 public record CastlingRights(
     boolean whiteKingSide,
     boolean whiteQueenSide,
